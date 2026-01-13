@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safaricom Skiza Offers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0A8F3C, #00C853);
+    color: #102A43;
+    padding: 14px;
+    max-width: 420px;
+    margin: auto;
+    min-height: 100vh;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+.subtitle {
+    margin-top: 6px;
+    font-size: 14px;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* TITLES */
+.main-title {
+    font-size: 20px;
+    text-align: center;
+    margin: 14px 0;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* INFO BOX */
+.how-it-works {
+    background: #ffffff;
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* OFFER CARDS */
+.offer-container {
+    background: #ffffff;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    transition: transform 0.25s ease;
+}
+
+.offer-container:hover {
+    transform: translateY(-2px);
+}
+
+.offer-header {
+    background: linear-gradient(90deg, #0A8F3C, #00C853);
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.offer-title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.offer-content {
+    padding: 14px;
+}
+
+/* BENEFITS */
+.benefits {
+    list-style: none;
+    margin-bottom: 12px;
+}
+
+.benefits li {
+    display: flex;
+    align-items: center;
+    font-size: 13.5px;
+    padding: 4px 0;
+}
+
+.benefits i {
+    color: #0A8F3C;
+    margin-right: 8px;
+}
+
+/* BUTTON */
+.download-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #1E88E5, #1565C0);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.download-btn:hover {
+    opacity: 0.95;
+}
+
+/* TESTIMONIALS */
+.testimonials-section {
+    margin-top: 20px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 14px;
+}
+
+.testimonials-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.testimonial-slide {
+    display: none;
+    font-size: 13.5px;
+}
+
+.testimonial-slide.active {
+    display: block;
+}
+
+.customer-name {
+    font-weight: 700;
+    color: #0A8F3C;
+}
+
+.stars {
+    color: #FFC107;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 320px;
+    text-align: center;
+}
+
+.ussd-code {
+    background: #F4FDF7;
+    border: 2px dashed #0A8F3C;
+    padding: 10px;
+    font-size: 18px;
+    margin: 10px 0;
+    font-weight: 700;
+}
+
+.modal-btn {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+}
+
+.modal-btn.primary {
+    background: #0A8F3C;
+    color: white;
+}
+
+.modal-btn.secondary {
+    background: #eeeeee;
+}
+
+/* FOOTER */
+.footer {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 12.5px;
+    color: white;
+    opacity: 0.9;
+}
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+            
+            .logo {
+                font-size: 28px;
+            }
+            
+            .subtitle {
+                font-size: 14px;
+                padding: 6px 15px;
+            }
+            
+            .offer-title {
+                font-size: 20px;
+            }
+            
+            .benefits li {
+                font-size: 13px;
+            }
+        }
+        
+        /* Animation for page load */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .offer-container {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        
+        .offer-container:nth-child(1) { animation-delay: 0.1s; }
+        .offer-container:nth-child(2) { animation-delay: 0.2s; }
+        .offer-container:nth-child(3) { animation-delay: 0.3s; }
+        
+        /* Ripple effect */
+        .ripple {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Safaricom<span>Skiza</span></div>
+        <div class="subtitle">Tap offer to activate instantly!</div>
+    </div>
+    
+    <h2 class="main-title">How It Works</h2>
+    <div class="how-it-works">
+        <h3>Try Offer 1 first → If no response → Try Offer 2 → Still no? → Try Offer 3!</h3>
+    </div>
+    
+    <!-- Offer 1 -->
+    <div class="offer-container">
+        <div class="offer-header">
+            <div class="offer-title">OFFER 1 FREE</div>
+        </div>
+        <div class="offer-content">
+            <ul class="benefits">
+                <li><i class="fas fa-wifi"></i> 500MB Free Data</li>
+                <li><i class="fas fa-sms"></i> 50 Free SMS</li>
+                <li><i class="fas fa-phone-alt"></i> Free Minutes</li>
+                <li><i class="fas fa-gift"></i> Bonus Rewards</li>
+            </ul>
+            <button class="download-btn" onclick="showOfferModal('offer1')">Activate Now</button>
+        </div>
+    </div>
+    
+    <!-- Offer 2 -->
+    <div class="offer-container">
+        <div class="offer-header">
+            <div class="offer-title">OFFER 2 FREE</div>
+        </div>
+        <div class="offer-content">
+            <ul class="benefits">
+                <li><i class="fas fa-wifi"></i> 1GB Premium Data</li>
+                <li><i class="fas fa-sms"></i> 100 Free SMS</li>
+                <li><i class="fas fa-phone-alt"></i> 30 Min Free Calls</li>
+                <li><i class="fas fa-crown"></i> VIP Perks</li>
+            </ul>
+            <button class="download-btn" onclick="showOfferModal('offer2')">Activate Now</button>
+        </div>
+    </div>
+    
+    <!-- Offer 3 -->
+    <div class="offer-container">
+        <div class="offer-header">
+            <div class="offer-title">OFFER 3 FREE</div>
+        </div>
+        <div class="offer-content">
+            <ul class="benefits">
+                <li><i class="fas fa-wifi"></i> 2GB Super Data</li>
+                <li><i class="fas fa-sms"></i> Unlimited SMS</li>
+                <li><i class="fas fa-phone-alt"></i> 60 Min Free Calls</li>
+                <li><i class="fas fa-star"></i> Exclusive Rewards</li>
+            </ul>
+            <button class="download-btn" onclick="showOfferModal('offer3')">Activate Now</button>
+        </div>
+    </div>
+    
+    <!-- Testimonials Slider -->
+    <div class="testimonials-section">
+        <h2 class="testimonials-title">What Users Say</h2>
+        <div class="testimonials-slider">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-slide active" id="slide1">
+                <div class="testimonial-header">
+                    <div class="customer-name">Mary N.</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    "I've been using these offers for months. Always get amazing rewards! The process is super easy and instant."
+                </div>
+                <div class="customer-offer">
+                    <i class="fas fa-calendar-alt"></i> Received: 3GB Data + 100 SMS
+                </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="testimonial-slide" id="slide2">
+                <div class="testimonial-header">
+                    <div class="customer-name">John K.</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    "Offer 2 worked perfectly for me! Got free data and minutes instantly. Highly recommend!"
+                </div>
+                <div class="customer-offer">
+                    <i class="fas fa-wifi"></i> Received: 1GB Data + 30 Min Calls
+                </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="testimonial-slide" id="slide3">
+                <div class="testimonial-header">
+                    <div class="customer-name">Sarah M.</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    "Best free offers ever! Saved so much on my phone bills. Try Offer 1 first, it worked for me!"
+                </div>
+                <div class="customer-offer">
+                    <i class="fas fa-gift"></i> Received: 500MB Data + Bonus
+                </div>
+            </div>
+            
+            <!-- Testimonial 4 -->
+            <div class="testimonial-slide" id="slide4">
+                <div class="testimonial-header">
+                    <div class="customer-name">David O.</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    "Couldn't believe it was free! Got unlimited SMS and free minutes. Will definitely use again!"
+                </div>
+                <div class="customer-offer">
+                    <i class="fas fa-sms"></i> Received: Unlimited SMS + 60 Min
+                </div>
+            </div>
+            
+            <!-- Testimonial 5 -->
+            <div class="testimonial-slide" id="slide5">
+                <div class="testimonial-header">
+                    <div class="customer-name">Lisa W.</div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    "All three offers work! I tried them on different days. Safaricom Skiza is amazing!"
+                </div>
+                <div class="customer-offer">
+                    <i class="fas fa-star"></i> Received: All Rewards Activated
+                </div>
+            </div>
+        </div>
+        
+        <div class="slider-controls">
+            <button class="slider-dot active" onclick="showSlide(0)"></button>
+            <button class="slider-dot" onclick="showSlide(1)"></button>
+            <button class="slider-dot" onclick="showSlide(2)"></button>
+            <button class="slider-dot" onclick="showSlide(3)"></button>
+            <button class="slider-dot" onclick="showSlide(4)"></button>
+        </div>
+    </div>
+    
+    <!-- USSD Modal -->
+    <div id="ussdModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">ACTIVATE OFFER</h3>
+            <p>This offer will dial the USSD code:</p>
+            <div class="ussd-code" id="ussdCode">*811*842#</div>
+            <p>Press call when prompted on your phone.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn secondary" onclick="closeModal()">Cancel</button>
+                <button class="modal-btn primary" onclick="dialUSSD()">Dial Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        &copy; 2023 Safaricom Skiza Offers. All rights reserved.<br>
+        <small style="color: #FFE66D;">Connect. Experience. Rewards.</small>
+    </div>
+
+    <script>
+        // Define USSD codes for each offer
+        const ussdCodes = {
+            offer1: "*811*842#",
+            offer2: "*811*879#",
+            offer3: "*811*856#"
+        };
+        
+        // Define offer names for display
+        const offerNames = {
+            offer1: "OFFER 1",
+            offer2: "OFFER 2",
+            offer3: "OFFER 3"
+        };
+        
+        let currentOfferType = "";
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        
+        // Initialize testimonial slider
+        function initSlider() {
+            // Auto slide every 5 seconds
+            setInterval(() => {
+                nextSlide();
+            }, 5000);
+        }
+        
+        // Show specific slide
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Remove active from all dots
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Show selected slide and activate dot
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+        
+        // Next slide function
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        // Function to show the modal with appropriate USSD code
+        function showOfferModal(offerType) {
+            currentOfferType = offerType;
+            const modal = document.getElementById("ussdModal");
+            const modalTitle = document.getElementById("modalTitle");
+            const ussdCodeElement = document.getElementById("ussdCode");
+            
+            modalTitle.textContent = offerNames[offerType];
+            ussdCodeElement.textContent = ussdCodes[offerType];
+            modal.style.display = "flex";
+            
+            // Add ripple effect
+            addRippleEffect(event);
+        }
+        
+        // Function to close the modal
+        function closeModal() {
+            const modal = document.getElementById("ussdModal");
+            modal.style.display = "none";
+        }
+        
+        // Function to initiate USSD call
+        function dialUSSD() {
+            const ussdCode = ussdCodes[currentOfferType];
+            
+            // For demo purposes, we'll show an alert
+            alert(`📱 Dialing: ${ussdCode}\n\n✅ Offer activation in progress...`);
+            
+            // For actual phone integration, use:
+            // window.location.href = `tel:${ussdCode}`;
+            
+            // Close the modal
+            closeModal();
+            
+            // Show success message after delay
+            setTimeout(() => {
+                alert(`🎉 Success! ${offerNames[currentOfferType]} activated!\n📨 You'll receive confirmation SMS shortly.`);
+            }, 800);
+        }
+        
+        // Add ripple effect to buttons
+        function addRippleEffect(event) {
+            const btn = event.target;
+            const x = event.clientX - btn.getBoundingClientRect().left;
+            const y = event.clientY - btn.getBoundingClientRect().top;
+            
+            const ripple = document.createElement('span');
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+            
+            btn.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        }
+        
+        // Attach ripple effect to all buttons
+        document.querySelectorAll('.download-btn, .modal-btn').forEach(btn => {
+            btn.addEventListener('click', addRippleEffect);
+        });
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById("ussdModal");
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        // Add hover effects to offer cards
+        document.querySelectorAll('.offer-container').forEach(container => {
+            container.addEventListener('mouseenter', function() {
+                this.style.zIndex = '10';
+            });
+            
+            container.addEventListener('mouseleave', function() {
+                this.style.zIndex = '1';
+            });
+        });
+        
+        // Initialize slider on page load
+        document.addEventListener('DOMContentLoaded', initSlider);
+    </script>
+</body>
+</html>
